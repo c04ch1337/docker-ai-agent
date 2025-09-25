@@ -1,0 +1,60 @@
+/* frontend/styles.css */
+:root {
+    --neon-color: #00ff99;
+    --background-color: #0a0a2a;
+    --card-background: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--neon-color);
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.neon-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px var(--neon-color);
+}
+
+.neon-input {
+    width: 100%;
+    min-height: 150px;
+    background: transparent;
+    border: 1px solid var(--neon-color);
+    color: var(--neon-color);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.neon-button {
+    background: transparent;
+    border: 2px solid var(--neon-color);
+    color: var(--neon-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+    background: var(--neon-color);
+    color: var(--background-color);
+    box-shadow: 0 0 30px var(--neon-color);
+}
+
+.response-area {
+    border: 1px solid var(--neon-color);
+    padding: 15px;
+    margin-top: 20px;
+    min-height: 100px;
+    overflow-y: auto;
+}

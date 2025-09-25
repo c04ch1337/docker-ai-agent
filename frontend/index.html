@@ -1,0 +1,55 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker AI Agent</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Docker AI Agent</h1>
+            <nav>
+                <ul>
+                    <li><a href="#docs">Documentation</a></li>
+                    <li><a href="#training">Training</a></li>
+                    <li><a href="#chat">Chat</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="chat">
+                <div class="neon-card">
+                    <h2>Interactive Chat</h2>
+                    <textarea 
+                        id="promptInput" 
+                        placeholder="Enter your prompt..."
+                        class="neon-input"
+                    ></textarea>
+                    <button onclick="sendMessage()" class="neon-button">Send</button>
+                    <div id="responseArea" class="response-area"></div>
+                </div>
+            </section>
+
+            <section id="training">
+                <div class="neon-card">
+                    <h2>Model Training</h2>
+                    <form id="trainingForm">
+                        <input type="file" id="trainingFile" accept=".md,.go" multiple>
+                        <select id="dataType">
+                            <option value="docker">Docker Documentation</option>
+                            <option value="go">Go Code</option>
+                        </select>
+                        <button type="submit" class="neon-button">Start Training</button>
+                    </form>
+                    <div id="trainingStatus"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

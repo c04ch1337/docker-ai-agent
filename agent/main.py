@@ -4,7 +4,7 @@ import torch
 import json
 from typing import Dict, List
 import logging
-from training.dataset import DockerGoDataset
+from agent.training.dataset import DockerGoDataset
 from torch.utils.data import DataLoader
 
 class AI_Agent:
