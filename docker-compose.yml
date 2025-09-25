@@ -1,0 +1,54 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  agent:
+    build: ./agent
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - MODEL_TYPE=llama
+      - TRAINING_MODE=true
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./training:/app/training
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 4
+              capabilities: [gpu]
+
+  api:
+    build: ./api
+    ports:
+      - "80:80"
+    depends_on:
+      - agent
+    environment:
+      - AGENT_URL=http://agent:8080
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  trainer:
+    build: ./trainer
+    depends_on:
+      - agent
+    environment:
+      - AGENT_URL=http://agent:8080
+    volumes:
+      - ./training:/app/training
+      - ./data:/app/data
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
