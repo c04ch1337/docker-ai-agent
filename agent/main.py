@@ -1,11 +1,11 @@
 # agent/main.py
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch
+import torch # type: ignore
 import json
 from typing import Dict, List
 import logging
 from training.dataset import DockerGoDataset
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader # type: ignore
 
 class AI_Agent:
     def __init__(self):
